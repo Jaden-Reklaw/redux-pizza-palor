@@ -41,7 +41,7 @@ class Checkout extends Component {
 
 const mapStateToProps = (reduxStore) => ({
 
-  customer: this.props.reduxStore,customer,
+  customer: this.props.reduxStore.customer,
 
 })
 

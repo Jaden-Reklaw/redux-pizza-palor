@@ -7,13 +7,36 @@ import {connect} from 'react-redux';
 import './PizzaListItem.css'
 
 class PizzaListItem extends Component {
+    state = {
+        show: true,
+    }
 
+    //Adds a Pizza to redux store
     addPizzaToCart = () => {
         console.log(this.props.pizza);
         // TODO: Dispatch here
-        this.props.dispatch( { type: 'ADD_PIZZA_CART', payload: this.props.pizza } );
+        this.props.dispatch({type: 'ADD_PIZZA_CART', payload: this.props.pizza});
+        this.setState({show: false});
         
     }
+
+    //Removes a Pizza from Redux store
+    removePizzaFromCart = () => {
+        console.log(this.props.pizza);
+        // TODO: Dispatch here
+        this.props.dispatch({type:'REMOVE_PIZZA_CART', payload: this.props.pizza.id});
+        this.setState({show: true});
+    }
+
+    //Conditional render for when add or remove button is pushed
+    showAddOrRemove = () => {
+        //needs to return JSX
+        if(this.state.show) {
+          return (<button onClick={this.addPizzaToCart}>Add</button>);
+        } else {
+          return (<button onClick={this.removePizzaFromCart}>Remove</button>);
+        }
+      }
 
     render() {
         
@@ -27,7 +50,7 @@ class PizzaListItem extends Component {
                     <h2>{pizza.name}</h2>
                     <p>{pizza.description}</p>
                     <h4>{pizza.price}</h4>
-                    <button onClick={this.addPizzaToCart}>Add Pizza to Cart</button>
+                    {this.showAddOrRemove()}
                 </div>
             </div>
                 
