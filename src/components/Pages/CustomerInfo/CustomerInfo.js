@@ -36,6 +36,9 @@ handleSubmit = (event) => {
       console.log('Error adding customer', error);
       })
       this.props.dispatch({type: 'SET_CUSTOMER', payload: this.state.newCustomer})
+      
+      
+      
       this.props.history.push('/checkout');
   }
 
