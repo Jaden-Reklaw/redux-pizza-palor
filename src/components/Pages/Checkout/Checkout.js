@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Checkout extends Component {
 
@@ -9,6 +10,7 @@ class Checkout extends Component {
     axios.post( '/order', this.props.customer )
       .then( (result) => {
         console.log( 'Posted to the server' );
+        this.props.history.push( '/' );
       })
       .catch( (error) => {
         alert( `Couldn't complete your order. Please try again` );
@@ -21,7 +23,7 @@ class Checkout extends Component {
       <div>
         <h2>Step 3: Checkout</h2>
         <div className="contactInfo">
-          { this.props.reduxStore.customer.name }
+          { this.props.customer.name }
           <br />
           { this.props.customer.address }
           <br />
@@ -30,12 +32,22 @@ class Checkout extends Component {
         <p className="orderType">{ this.props.customer.type }</p>
 
         <table className="orderTable">
-          <tr>
-            <th>Pizza Name</th>
-            <th>Cost</th>
-          </tr>
-
+          <thead>
+            <tr>
+              <th>Pizza Name</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.props.cart.map( ( pizza, index ) => 
+                      <tr key={ index }>
+                          <td>{ pizza.name }</td>
+                          <td>{ pizza.price }</td>
+                      </tr>
+                  )}
+          </tbody>
         </table>
+        <p>Total: </p>
         <button onClick={ this.handleClick }>CHECKOUT</button>
       </div>
     );
@@ -44,9 +56,10 @@ class Checkout extends Component {
 
 const mapStateToProps = (reduxStore) => ({
 
-  customer: this.props.reduxStore.customer,
+  customer: reduxStore.customer,
+  cart: reduxStore.cart,
 
 
 })
 
-export default connect( mapStateToProps )(Checkout);
+export default withRouter(connect( mapStateToProps )(Checkout));
