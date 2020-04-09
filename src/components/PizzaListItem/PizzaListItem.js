@@ -9,9 +9,9 @@ import './PizzaListItem.css'
 class PizzaListItem extends Component {
 
     addPizzaToCart = () => {
-        console.log(this.props.product);
+        console.log(this.props.pizza);
         // TODO: Dispatch here
-        this.props.dispatch( { type: 'ADD_PIZZA_CART', payload: this.props.product } );
+        this.props.dispatch( { type: 'ADD_PIZZA_CART', payload: this.props.pizza } );
         
     }
 
