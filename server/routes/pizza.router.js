@@ -10,6 +10,6 @@ router.get('/', (req, res) => {
         console.log('Error GET /api/pizza', error)
         res.sendStatus(500);
     });
-})
+})  
 
 module.exports = router;
