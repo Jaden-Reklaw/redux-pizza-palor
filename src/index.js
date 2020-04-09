@@ -14,7 +14,7 @@ import { Provider } from 'react-redux';
 
 //Reducer for setting state for the list of pizza
 const pizzaList = (state = [], action) => {
-    // TODO - set items list with data from server
+    // TODO - set pizza list with data from server
     if(action.type === 'SET_PIZZAS') {
       return action.payload;
     }
@@ -31,9 +31,21 @@ const orderList = (state = [], action) => {
 }
 
   const cart = (state = [], action) => {
-    // TODO - set book list with data from server
-    if(action.type === 'ADD_PIZZA_CART') {
-      return state;
+    // TODO - set pizza list with data from server
+    if(action.type === 'ADD_PIZZA_CART'){
+        return [...state, action.payload];
+    }
+    if(action.type === 'REMOVE_PIZZA_CART'){
+        let array = [...state];
+        let filterArray = array.filter((item) => item.id !== action.payload);
+        return filterArray;
+    }
+    return state;
+  }
+
+  const customer = (state = {}, action) => {
+    if(action.type === 'SET_CUSTOMER') {
+      return state = action.payload;
     }
     return state;
   }
@@ -47,7 +59,7 @@ const orderList = (state = [], action) => {
 
 // The store is the big JavaScript Object that holds all of the information for our application
 const storeInstance = createStore(
-    combineReducers({pizzaList}), //Add reducer functions to combineReducers
+    combineReducers({pizzaList,cart, customer}), //Add reducer functions to combineReducers
     applyMiddleware(logger) //Add our middleware logger
 );
 
