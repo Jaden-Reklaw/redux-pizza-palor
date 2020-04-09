@@ -39,7 +39,7 @@ export class AdminOrders extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                        {this.state.orders.map( (item, i) => 
+                        {this.state.orderList.map( (item, i) => 
                         <tr key={i}>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
@@ -54,7 +54,7 @@ export class AdminOrders extends Component {
     }
 }
 const mapStateToProps = (reduxStore) => ({
-    reduxStore
+    orderList: reduxStore.orderList
 });
 
 
