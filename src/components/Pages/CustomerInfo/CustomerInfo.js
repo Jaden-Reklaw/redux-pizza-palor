@@ -47,7 +47,7 @@ handleSubmit = (event) => {
             </header>
             <main>
                 <h2>Step 2: Customer Information</h2>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                     <input type="text" placeholder="Name" value={this.state.newCustomer.name} 
                     onChange={(event) => this.handleChangeFor('name', event)}/>
                     <input type="text" placeholder="Street Address" value={this.state.newCustomer.address}
@@ -67,7 +67,7 @@ handleSubmit = (event) => {
                         Delivery
                     </label>
                 </form>
-                <button type="submit">Next</button>
+                <button type="submit" onClick={this.handleSubmit}>Next</button>
             </main>
       </div>
     );
