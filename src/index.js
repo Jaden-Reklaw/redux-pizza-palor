@@ -26,6 +26,11 @@ const pizzaList = (state = [], action) => {
     if(action.type === 'ADD_PIZZA_CART'){
         return [...state, action.payload];
     }
+    if(action.type === 'REMOVE_PIZZA_CART'){
+        let array = [...state];
+        let filterArray = array.filter((item) => item.id !== action.payload);
+        return filterArray;
+    }
     return state;
   }
 
