@@ -17,12 +17,11 @@ class Checkout extends Component {
   }; //end handle click
 
   render() {
-    JSON.stringify('hello')
     return (
       <div>
         <h2>Step 3: Checkout</h2>
         <div className="contactInfo">
-          { this.props.customer.name }
+          { this.props.reduxStore.customer.name }
           <br />
           { this.props.customer.address }
           <br />
@@ -30,9 +29,13 @@ class Checkout extends Component {
         </div>
         <p className="orderType">{ this.props.customer.type }</p>
 
-        {/* Placeholder for table */}
+        <table className="orderTable">
+          <tr>
+            <th>Pizza Name</th>
+            <th>Cost</th>
+          </tr>
 
-        {/* Placeholder for Total */}
+        </table>
         <button onClick={ this.handleClick }>CHECKOUT</button>
       </div>
     );
@@ -42,6 +45,7 @@ class Checkout extends Component {
 const mapStateToProps = (reduxStore) => ({
 
   customer: this.props.reduxStore.customer,
+
 
 })
 
