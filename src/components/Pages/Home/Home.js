@@ -13,7 +13,7 @@ class Home extends Component {
   componentDidMount() {
     this.getPizza();
   }
-
+  
   getPizza = () => {
     axios.get('./api/pizza')
       .then(response => {

@@ -21,6 +21,15 @@ const pizzaList = (state = [], action) => {
     return state;
   }
 
+  //Reducer for setting state for the list of order
+const orderList = (state = [], action) => {
+  // TODO - set orders list with data from server
+  if(action.type === 'SET_ORDERS') {
+    return action.payload;
+  }
+  return state;
+}
+
   const cart = (state = [], action) => {
     // TODO - set pizza list with data from server
     if(action.type === 'ADD_PIZZA_CART'){
@@ -40,6 +49,8 @@ const pizzaList = (state = [], action) => {
     }
     return state;
   }
+
+  
 
 
   //Add Reducer for Adding a Pizza to Cart
