@@ -26,15 +26,7 @@ handleChangeFor = ( propertyName, event ) => {
 handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Adding customer`, this.state.newCustomer);
-    // POST request to add new customer
-    axios.post('/orders', this.state.newCustomer)
-      .then(response => {
-      console.log('Added successfully');
-      })
-      .catch (error => {
-      console.log('Error adding customer', error);
-      })
-      this.props.dispatch({type: 'SET_CUSTOMER', payload: this.state.newCustomer})
+    this.props.dispatch({type: 'SET_CUSTOMER', payload: this.state.newCustomer})
   }
 
   render() {

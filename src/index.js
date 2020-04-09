@@ -29,9 +29,9 @@ const pizzaList = (state = [], action) => {
     return state;
   }
 
-  const customer = (state = [], action) => {
+  const customer = (state = {}, action) => {
     if(action.type === 'SET_CUSTOMER') {
-      return [...state, action.payload];
+      return state = action.payload;
     }
     return state;
   }

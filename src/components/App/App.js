@@ -32,8 +32,6 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Prime Pizza</h1>
         </header>
-        
-        <button>NEXT</button>
         <Router>
           <nav>
             <ul>
