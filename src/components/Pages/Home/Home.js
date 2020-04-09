@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { HashRouter as Router, Route } from 'react-router-dom';
 //Import Axios
 import axios from 'axios';
 
@@ -24,12 +24,22 @@ class Home extends Component {
       })
   }
 
+  handleSubmit = () => {
+    this.props.history.push('/info');
+  }
+
   render() {
     return (
+      <Router>
       <div>
         <h2>Step 1: Select Your Pizza</h2>
         <PizzaList />
+        <nav>
+        <button onClick={this.handleSubmit}>Next</button>
+        </nav>
+        <Route path='/info' page={CustomerInfo} />
       </div>
+      </Router>
     );
   }
 }
