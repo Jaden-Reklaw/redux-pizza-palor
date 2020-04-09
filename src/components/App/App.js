@@ -14,6 +14,8 @@ class App extends Component {
       .then(response => {
         console.log('Pizza', response.data);
         this.props.dispatch({ type: '', payload: response.data })
+      }).catch( error => {
+        console.log('error displaying pizza', error);
       })
   }
 
