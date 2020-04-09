@@ -21,18 +21,23 @@ const pizzaList = (state = [], action) => {
     return state;
   }
 
+    //Add Reducer for Adding a Pizza to Cart
+  //Add Reducer for Removing Pizza from Cart
   const cart = (state = [], action) => {
     // TODO - set pizza list with data from server
     if(action.type === 'ADD_PIZZA_CART'){
         return [...state, action.payload];
     }
+    if(action.type === 'REMOVE_PIZZA_CART'){
+        let array = [...state];
+        let filterArray = array.filter((item) => item.id !== action.payload);
+        return filterArray;
+    }
     return state;
   }
 
 
-  //Add Reducer for Adding a Pizza to Cart
 
-  //Add Reducer for Removing Pizza from Cart
 
 // The store is the big JavaScript Object that holds all of the information for our application
 const storeInstance = createStore(
