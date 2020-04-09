@@ -14,12 +14,21 @@ import { Provider } from 'react-redux';
 
 //Reducer for setting state for the list of pizza
 const pizzaList = (state = [], action) => {
-    // TODO - set book list with data from server
+    // TODO - set items list with data from server
     if(action.type === 'SET_PIZZAS') {
       return action.payload;
     }
     return state;
   }
+
+  //Reducer for setting state for the list of order
+const orderList = (state = [], action) => {
+  // TODO - set orders list with data from server
+  if(action.type === 'SET_ORDERS') {
+    return action.payload;
+  }
+  return state;
+}
 
   const cart = (state = [], action) => {
     // TODO - set book list with data from server
@@ -28,6 +37,8 @@ const pizzaList = (state = [], action) => {
     }
     return state;
   }
+
+  
 
 
   //Add Reducer for Adding a Pizza to Cart
