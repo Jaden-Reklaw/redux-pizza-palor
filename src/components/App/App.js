@@ -48,7 +48,7 @@ class App extends Component {
               </li>
             </ul>
           </nav>
-          <Route exact git path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path='/info' component={CustomerInfo} />
           <Route path='/checkout' component={Checkout} />
         </Router>  
