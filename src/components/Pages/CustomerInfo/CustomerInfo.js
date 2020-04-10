@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
@@ -23,10 +24,21 @@ handleChangeFor = ( propertyName, event ) => {
     })
 }
 
+
 handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Adding customer`, this.state.newCustomer);
-    this.props.dispatch({type: 'SET_CUSTOMER', payload: this.state.newCustomer})
+    // POST request to add new customer
+    axios.post('/orders', this.state.newCustomer)
+      .then(response => {
+      console.log('Added successfully');
+      })
+      .catch (error => {
+      console.log('Error adding customer', error);
+      })
+      this.props.dispatch({type: 'SET_CUSTOMER', payload: this.state.newCustomer})
+      //
+      this.props.history.push('/checkout');
   }
 
   render() {
@@ -48,22 +60,24 @@ handleSubmit = (event) => {
                     onChange={(event) => this.handleChangeFor('city', event)}/>
                     <input type="text" placeholder="Zip Code" value={this.state.newCustomer.zip}
                     onChange={(event) => this.handleChangeFor('zip', event)}/>
+                    <div onChange={(event) => this.handleChangeFor('type', event)}>
                     <label>
-                        <input type="radio" value="yes" defaultChecked name="Pickup" 
-                        value={this.state.newCustomer.type} onChange={(event) => this.handleChangeFor('type', event)}/>
+                        <input type="radio" value="Pickup" defaultChecked name="Pickup"/>
                         Pickup
                     </label>
                     <label>
-                        <input type="radio" value="yes" name="Delivery" 
-                        value={this.state.newCustomer.type} onChange={(event) => this.handleChangeFor('type', event)}/>
+                        <input type="radio" value="Delivery" name="Delivery"/>
                         Delivery
                     </label>
                 </form>
+                </div>
+                <nav>
                 <button type="submit" onClick={this.handleSubmit}>Next</button>
+                </nav>
             </main>
       </div>
     );
   }
 }
 
-export default connect()(CustomerInfo);
+export default withRouter(connect()(CustomerInfo));
