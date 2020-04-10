@@ -13,7 +13,7 @@ export class Header extends Component {
                 <nav>
                     <ul className="main-nav">
                         <li><h1>Prime Pizza</h1></li>
-                        <li className="push">Total: <span>Total Here</span></li>
+                        <li className="push">Total: <span>{this.props.reduxStore.cart.total}</span></li>
                     </ul>
                 </nav>
             </div>
