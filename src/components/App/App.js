@@ -3,9 +3,11 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
+//Import components to put on this page
 import CustomerInfo from '../Pages/CustomerInfo/CustomerInfo';
 import Checkout from '../Pages/Checkout/Checkout';
 import Home from '../Pages/Home/Home';
+import Header from '../Header/Header';
 
 class App extends Component {
 
@@ -29,23 +31,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Prime Pizza</h1>
-        </header>
+        <Header />
         <Router>
-          <nav>
-            <ul>
-            <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/info'>Customer Info</Link>
-              </li>
-              <li>
-                <Link to='/checkout'>Checkout</Link>
-              </li>
-            </ul>
-          </nav>
           <Route exact path='/' component={Home} />
           <Route path='/info' component={CustomerInfo} />
           <Route path='/checkout' component={Checkout} />
