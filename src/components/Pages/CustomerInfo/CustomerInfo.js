@@ -29,7 +29,7 @@ class CustomerInfo extends Component {
     event.preventDefault();
     console.log(`Adding customer`, this.state.newCustomer);
     // POST request to add new customer
-    axios.post('/orders', this.state.newCustomer)
+    axios.post('/api/order', this.state.newCustomer)
       .then(response => {
         console.log('Added successfully');
       })
@@ -62,11 +62,11 @@ class CustomerInfo extends Component {
               onChange={(event) => this.handleChangeFor('zip', event)} />
             <div onChange={(event) => this.handleChangeFor('type', event)}>
               <label>
-                <input type="radio" value="Pickup" defaultChecked name="Pickup" />
+                <input type="radio" value="Pickup" name="Type" />
                         Pickup
                     </label>
               <label>
-                <input type="radio" value="Delivery" name="Delivery" />
+                <input type="radio" value="Delivery" name="Type" />
                         Delivery
                     </label>
             </div>
