@@ -39,7 +39,7 @@ class Checkout extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.props.cart.map( ( pizza, index ) => 
+            { this.props.cart.pizzas.map( ( pizza, index ) => 
                       <tr key={ index }>
                           <td>{ pizza.name }</td>
                           <td>{ pizza.price }</td>
@@ -47,7 +47,7 @@ class Checkout extends Component {
                   )}
           </tbody>
         </table>
-        <p>Total: </p>
+        <p>Total: { this.props.cart.total }</p>
         <button onClick={ this.handleClick }>CHECKOUT</button>
       </div>
     );

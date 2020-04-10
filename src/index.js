@@ -30,15 +30,23 @@ const orderList = (state = [], action) => {
   return state;
 }
 
-  const cart = (state = [], action) => {
+  const cart = (state = { pizzas: [], total: 0 }, action) => {
     // TODO - set pizza list with data from server
     if(action.type === 'ADD_PIZZA_CART'){
-        return [...state, action.payload];
+      const updatedState = { pizzas: [ ...state.pizzas, action.payload ], total: state.total + Number( action.payload.price ) }
+        return updatedState;
     }
     if(action.type === 'REMOVE_PIZZA_CART'){
-        let array = [...state];
+        let array = [ ...state.pizzas ];
         let filterArray = array.filter((item) => item.id !== action.payload);
-        return filterArray;
+        let subtractFromTotal;
+        for ( let pizza of state.pizzas ) {
+          if ( pizza.id === action.payload ) {
+            subtractFromTotal = pizza.price;
+          }
+        }
+        const updatedState = { pizzas: filterArray, total: state.total - subtractFromTotal };
+        return updatedState;
     }
     return state;
   }
