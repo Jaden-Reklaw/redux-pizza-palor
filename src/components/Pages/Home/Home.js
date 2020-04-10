@@ -7,12 +7,20 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 //Import components that are used on this home page
-import PizzaList from '../../PizzaList/PizzaList'
+import PizzaList from '../../PizzaList/PizzaList';
+
+//Import to do routing
+import {withRouter} from 'react-router-dom';
 
 class Home extends Component {
   componentDidMount() {
     this.getPizza();
   }
+
+  handleChangePage = () => {
+    //change page to info page
+    this.props.history.push( '/info' );
+}
   
   getPizza = () => {
     axios.get('./api/pizza')
@@ -33,9 +41,7 @@ class Home extends Component {
       <div>
         <h2>Step 1: Select Your Pizza</h2>
         <PizzaList />
-        <nav>
-        <button onClick={this.handleSubmit}>Next</button>
-        </nav>
+        <button onClick={this.handleChangePage}>Next</button>
       </div>
     );
   }
