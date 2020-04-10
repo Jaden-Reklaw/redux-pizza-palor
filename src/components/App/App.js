@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import { HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
 //Import components to put on this page
@@ -12,24 +11,6 @@ import Header from '../Header/Header';
 
 
 class App extends Component {
-
-
-  componentDidMount() {
-    this.getPizza();
-  }
-
-  getPizza = () => {
-    axios.get('./pizza')
-      .then(response => {
-        console.log('Pizza', response.data);
-        this.props.dispatch({ type: '', payload: response.data })
-      }).catch( error => {
-        console.log('error displaying pizza', error);
-      })
-  }
-
-
-
   render() {
     return (
       <div className="App">
