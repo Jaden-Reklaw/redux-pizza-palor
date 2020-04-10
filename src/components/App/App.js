@@ -13,9 +13,6 @@ import { withRouter } from 'react-router';
 
 class App extends Component {
 
-  componentDidMount() {
-    this.getPizza();
-  }
 
   render() {
     return (
