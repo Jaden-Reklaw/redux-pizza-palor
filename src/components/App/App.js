@@ -8,9 +8,15 @@ import Checkout from '../Pages/Checkout/Checkout';
 import Home from '../Pages/Home/Home';
 import AdminOrders from '../Pages/AdminOrders/AdminOrders';
 import Header from '../Header/Header';
+import { withRouter } from 'react-router';
 
 
 class App extends Component {
+
+  componentDidMount() {
+    this.getPizza();
+  }
+
   render() {
     return (
       <div className="App">
@@ -26,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

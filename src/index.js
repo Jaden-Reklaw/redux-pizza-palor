@@ -5,7 +5,7 @@ import App from './components/App/App';
 
 //Bring in Redux Logger
 import logger from 'redux-logger';
-
+import { HashRouter as Router } from 'react-router-dom';
 // Bring in Redux
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -72,4 +72,4 @@ const storeInstance = createStore(
 );
 
 // Wrap our App in a Provider, this makes Redux available in our entire application
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={storeInstance}><Router><App /></Router></Provider>, document.getElementById('root'));
