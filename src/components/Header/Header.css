@@ -1,0 +1,19 @@
+/* Navigation bar */
+.main-nav {
+    background-color: navy;
+    color: oldlace;
+    display: flex;
+    list-style: none;
+    font-size: 0.7em;
+    margin: 0;
+}
+
+.push {
+    margin-left: auto;
+}
+
+li {
+    font-size: 20px;
+    padding: 20px;
+}
+

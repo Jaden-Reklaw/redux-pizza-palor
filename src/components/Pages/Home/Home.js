@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 //Import Axios
 import axios from 'axios';
 
@@ -30,6 +29,10 @@ class Home extends Component {
       }).catch( error => {
         console.log('error displaying pizza', error);
       })
+  }
+
+  handleSubmit = () => {
+    this.props.history.push('/info');
   }
 
   render() {
