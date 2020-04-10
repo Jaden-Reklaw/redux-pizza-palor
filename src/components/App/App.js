@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
@@ -9,6 +9,7 @@ import Checkout from '../Pages/Checkout/Checkout';
 import Home from '../Pages/Home/Home';
 import AdminOrders from '../Pages/AdminOrders/AdminOrders';
 import Header from '../Header/Header';
+import { withRouter } from 'react-router';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getPizza();
+    this.props.history.push( '/' );
   }
 
   getPizza = () => {
@@ -45,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

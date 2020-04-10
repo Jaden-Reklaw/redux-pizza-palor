@@ -14,10 +14,10 @@ class Checkout extends Component {
       zip: this.props.customer.zip,
       type: this.props.customer.type,
       total: this.props.cart.total,
-      pizzas: this.props.cart.pizzs,
+      pizzas: this.props.cart.pizzas,
     }
-    console.log( 'Got a checkout' );
-    axios.post( '/api/order', orderDetails )
+    console.log( 'Got a checkout', orderDetails );
+    axios.post( './api/order', orderDetails )
       .then( (result) => {
         console.log( 'Posted to the server' );
         this.props.history.push( '/' );
