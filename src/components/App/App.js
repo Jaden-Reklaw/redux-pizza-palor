@@ -13,8 +13,6 @@ import { withRouter } from 'react-router';
 
 class App extends Component {
 
-  componentDidMount() {
-  }
 
   render() {
     return (
