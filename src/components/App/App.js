@@ -7,7 +7,9 @@ import './App.css';
 import CustomerInfo from '../Pages/CustomerInfo/CustomerInfo';
 import Checkout from '../Pages/Checkout/Checkout';
 import Home from '../Pages/Home/Home';
+import AdminOrders from '../Pages/AdminOrders/AdminOrders';
 import Header from '../Header/Header';
+
 
 class App extends Component {
 
@@ -36,6 +38,7 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route path='/info' component={CustomerInfo} />
           <Route path='/checkout' component={Checkout} />
+          <Route path='/admin' component={AdminOrders} />
         </Router>  
       </div>
     );
