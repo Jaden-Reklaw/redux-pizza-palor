@@ -5,9 +5,19 @@ import { withRouter } from 'react-router-dom';
 
 class Checkout extends Component {
 
-  handleClick = () => {
+  handleClick = (event) => {
+    event.preventDefault();
+    let orderDetails = {
+      customer_name: this.props.customer.name,
+      street_address: this.props.customer.address,
+      city: this.props.customer.city,
+      zip: this.props.customer.zip,
+      type: this.props.customer.type,
+      total: this.props.cart.total,
+      pizzas: this.props.cart.pizzs,
+    }
     console.log( 'Got a checkout' );
-    axios.post( '/order', this.props.customer )
+    axios.post( '/api/order', orderDetails )
       .then( (result) => {
         console.log( 'Posted to the server' );
         this.props.history.push( '/' );
@@ -48,7 +58,7 @@ class Checkout extends Component {
           </tbody>
         </table>
         <p>Total: { this.props.cart.total }</p>
-        <button onClick={ this.handleClick }>CHECKOUT</button>
+        <button onClick={ (event) => this.handleClick(event) }>CHECKOUT</button>
       </div>
     );
   }
