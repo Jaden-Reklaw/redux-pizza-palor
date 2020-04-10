@@ -9,6 +9,8 @@ import {connect} from 'react-redux';
 //Import to do routing
 import {withRouter} from 'react-router-dom';
 
+import './AdminOrders.css'
+
 export class AdminOrders extends Component {
 
     componentDidMount() {
@@ -16,7 +18,7 @@ export class AdminOrders extends Component {
       }
 
     getOrders = () => {
-        axios.get('./api/orders')
+        axios.get('./api/order')
           .then(response => {
             console.log('Orders', response.data);
             this.props.dispatch({ type: 'SET_ORDERS', payload: response.data })
@@ -44,8 +46,8 @@ export class AdminOrders extends Component {
                         <tbody>
                         {this.props.orderList.map( (item, i) => 
                         <tr key={i}>
-                            <td>{item.name}</td>
-                            <td>{item.description}</td>
+                            <td>{item.customer_name}</td>
+                            <td>{item.time}</td>
                             <td>{item.type}</td>
                             <td>{item.total}</td>
                             </tr>)}
