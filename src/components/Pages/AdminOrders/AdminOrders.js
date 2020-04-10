@@ -6,6 +6,9 @@ import axios from 'axios';
 //Connect to the redux store
 import {connect} from 'react-redux';
 
+//Import to do routing
+import {withRouter} from 'react-router-dom';
+
 export class AdminOrders extends Component {
 
     componentDidMount() {
@@ -26,10 +29,10 @@ export class AdminOrders extends Component {
         return (
             <div>
                 <header>
-                    <h1>Prime Pizza</h1>
+                    <h1>Prime Pizza Orders</h1>
                 </header>
                 <div>
-                    <table>
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -39,7 +42,7 @@ export class AdminOrders extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                        {this.state.orderList.map( (item, i) => 
+                        {this.props.orderList.map( (item, i) => 
                         <tr key={i}>
                             <td>{item.name}</td>
                             <td>{item.description}</td>
@@ -59,4 +62,4 @@ const mapStateToProps = (reduxStore) => ({
 
 
 
-export default connect(mapStateToProps)(AdminOrders);
+export default withRouter(connect(mapStateToProps)(AdminOrders));
